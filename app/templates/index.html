@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Judul Halaman -->
+	<title>Triasih</title>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+	
+	<!-- Icon -->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/logo_triasih.png') }}">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap.min.css') }} type="text/css">
+	<link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}  type="text/css">
+	
+	<!-- JavaScript -->
+	<script src={{ url_for('static', filename='/js/jquery_3.6.0.min.js') }} ></script>
+	<script src={{ url_for('static', filename='/js/bootstrap.js') }} ></script>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Sweet Alert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body id="halamanku" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			
+			<!-- Logo -->
+			<div class="navbar-header">
+				
+				<img src={{ url_for('static', filename='/images/triasih.png') }} alt="Orbit Logo" 
+				width="100" height="50" align="left">
+				<!-- <a class="navbar-brand" href="#halamanku">&#160;T R I A S I H &ensp;</a> -->
+				
+	
+			</div>
+			
+			<!-- Daftar Halaman -->
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#tentang">Tentang</a></li>
+					<li><a href="#aplikasi">Aplikasi</a></li>
+					<li><a href="#info">Info Pakaian Adat</a></li>
+					<li><a href="#tim">Tim</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Bagian Halaman (Informasi) -->
+	<div id="tentang" class="container-fluid" style="background-color:#5e72e4">
+		<div class="row">
+			<div class="col-md-6">
+				<h6>Selamat Datang di TRIASIH</h6>
+				<h4>Pendeteksi Pakaian Adat</h4><br>
+				<p style="text-align: justify;text-justify: inter-word;">
+					<h5>
+					Aplikasi ini dibuat khusus untuk mendeteksi pakaian adat yang ada di Indonesia. 
+					Pada dataset, terdapat 7 objek provinsi yang dapat diklasifikasi yaitu Bali, Jawa Tengah, 
+					Kalimantan Barat, Papua, Riau, Sulawesi Selatan, dan Sumatera Utara. 
+					Untuk dapat menggunakan aplikasi ini, pengguna hanya mengunggah sebuah gambar dengan format 'JPG', 'JPEG', atau 'PNG'. 
+					Hasil deteksi objek akan ditampilkan setelah pengguna mengunggah gambar tersebut.</h5>
+				</p>
+				<br>
+
+				<!-- Tombol Coba Aplikasi -->
+				<nav id="navgo" class="navbar" style="background-color:#5e72e4;z-index: 0;">
+					<ul class="nav nav-pills">
+						<li class="nav-item">
+							<a class="btn btn-default btn-lg" href="#aplikasi" style="background-color:#5e72e4">Coba Aplikasi</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+				
+			<div class="col-md-6">
+				<br>
+				<br>
+					<!-- Gambar Deskripsi Aplikasi -->
+					<div align="right" style="background-color:#5e72e4;z-index: 0;">
+						<img src={{ url_for('static', filename='/images/app-display.jpg') }} height="300" ></img>
+					</div>
+				</div>
+		</div>
+		<br>
+		<br>
+	</div>
+
+	<!-- Bagian Halaman (Aplikasi) -->
+	<div align="center" id="aplikasi" data-bs-spy="scroll" data-bs-target="#navgo" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+		
+		<div class="row">
+			<div class="col-lg-12 mt-8 mt-lg-12">
+				<br>
+				<br>
+				<br>
+				<h2>Aplikasi</h2>
+				<br>
+				<div>
+					<form>
+						<div id="error">
+							<!-- Input atau Upload Gambar dari Pengguna -->
+							<img src={{ url_for('static', filename='/images/ex-upload.jpeg') }} width="400" height="240"></img>
+							<p>Silakan upload sebuah gambar dan lakukan deteksi melalui tombol di bawah ini.</p>
+							<input type="file" id="input_gambar" name="file">
+							<br>
+							<button type="submit" id="prediksi_submit" class="btn">Deteksi Gambar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- <div class="col-sm-6"> -->
+				<!-- Bagian Halaman untuk Hasil Prediksi -->
+				<!-- <div id="hasil_prediksi" align="center"> -->
+					<!-- Hasil Prediksi akan ditampilkan di sini-->
+				<!-- </div>
+			</div> -->
+		</div>
+	</div>
+
+		<!-- Bagian Halaman (Info) -->
+	<div id="info" class="container-fluid text-center">
+		<br>
+		<h2>Info Pakaian Adat</h2>
+		<br>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/BALI.jpeg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Bali</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Payas agung adalah pakaian tradisional masyarakat Bali. Payas agung ini biasanya dipakai ketika 
+									upacara pernikahan atau potong gigi. Pakaian ini memiliki kesan mewah dan spesial, maka dari itu 
+									payas agung tidak ditujukan untuk berbagai aktivitas.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/JATENG.jpg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Jawa Tengah</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Pakaian adat Jawa Tengah memiliki ciri khas berupa pakaian yang kental dengan nuansa kerajaan atau 
+									keraton Jawa. Selain itu terdapat berbagai aksesori yang membuat pakaian ini terlihat lebih cantik dan 
+									menawan.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/KALBAR.jpeg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Kalimantan Barat</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Pakaian adat Kalimantan Barat untuk kaum laki-laki suku Dayak disebut king baba.
+									Pakaian adat suku Dayak untuk perempuan juga kurang lebih dibuat dengan cara dan bahan yang sama dengan pakaian adat kaum laki-laki.			
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/PAPUA.jpeg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Papua</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Koteka digunakan dengan cara diikat ke pinggang menggunakan seutas tali, sehingga posisinya akan mengacung ke atas.
+									Untuk koteka yang digunakan pada acara adat, biasanya menggunakan koteka yang berukuran panjang dan juga memiliki ukiran dengan nilai etnis tersendiri.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/RIAU.jpeg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Riau</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Pakaian adat Riau memiliki kemiripan dengan pakaian adat Melayu. Pakaian-pakaian ini memiliki ciri tertentu sesuai dengan kegunaannya.
+									Pakaian adat ini dapat dibagi menjadi beberapa kategori seperti pakaian sehari-hari, pakaian resmi, pakaian upacara pernikahan, dan pakaian upacara adat.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/SULSEL.jpeg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Sulawesi Selatan</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Baju tutu merupakan pakaian adat yang berasal dari suku Bugis. Busana ini terdiri dari jas yang memiliki nama jas tutu, disandingkan dengan celana dan kain sarung atau lipa garusuk.
+									Terdapat pelindung kepala yang wajib dikenakan jika memakai baju tutu yang bernama songok.
+									Baju tutu memiliki bentuk lengan panjang, berkerah dan dihiasi kancing yang terbuat dari (bahan/warna) emas atau perak.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="new-arrival-product">
+							<div class="new-arrivals-img-contnent">
+								<img class="img-fluid" src="{{ url_for('static', filename='images/pakaian/SUMUT.jpeg') }}" alt="">
+							</div>
+							<div class="new-arrival-content position-relative">
+								<h4>Sumatera Utara</h4>
+								<p style="text-align: justify;text-justify: inter-word;">
+									Pakaian adat di Sumatera Utara adalah Ulos. Di mana pakaian adat tersebut dibuat dengan kain ulos yang berbahan sutra dan diproes dengan cara ditenun.
+									Ulos yang menjadi ciri khas bagi masyarakat Sumatera Utara sudah ada sejak lama dan secara turun temurun dikembangan masyarakat Batak.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bagian Halaman (Anggota Kelompok) -->
+	<div id="tim" class="container-fluid text-center">
+		<br>
+		<h2 >Tim</h2>
+		<h4><b>Anggota Tim ASIMO 1</b></h4>
+		<br>
+		<div class="container">
+			<div class="row slideanim">
+			  <div class="col-lg-12 justify-content-center d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+				<div class="col-lg-12 icon-boxes d-flex flex-column justify-content-center">
+				  <div class="row">
+					<div class="col-lg-4 d-flex align-items-stretch">
+					  <div class="icon-box">
+						<!-- <i class="fa fa-user" aria-hidden="true" style="font-size: 50px; color: #038a98d8;"></i> -->
+						<div class="profile-photo">
+							<img src="{{ url_for('static', filename='images/profile/Indah.jpg') }}" width="100" class="img-fluid rounded-circle" alt="">
+						</div>
+						<h4><b>Indah Zahrani Lubis</b></h4>
+						<p>Universitas Sumatera Utara</p>
+						<button type="button" class="btn btn-md btn-light" style="background-color: #1231cd; color: #fff;" disabled>Modelling</button>
+					  </div>
+					</div>
+					<div class="col-lg-4 d-flex align-items-stretch">
+					  <div class="icon-box">
+						<div class="profile-photo">
+							<img src="{{ url_for('static', filename='images/profile/Aster.jpg') }}" width="100" class="img-fluid rounded-circle" alt="">
+						</div>
+						<h4><b>Aster Happy Lestari</b></h4>
+						<p>Politeknik Negeri Padang</p>
+						<button type="button" class="btn btn-md btn-light" style="background-color: #1231cd; color: #fff;" disabled>Deployment</button>
+					  </div>
+					</div>
+					<div class="col-lg-4 d-flex align-items-stretch">
+					  <div class="icon-box">
+						<div class="profile-photo">
+							<img src="{{ url_for('static', filename='images/profile/Dinda.jpg') }}" width="100" class="img-fluid rounded-circle" alt="">
+						</div>
+						<h4><b>Dinda Ramadhanty Niigata</b></h4>
+						<p>Universitas Budi Luhur</p>
+						<button type="button" class="btn btn-md btn-light" style="background-color: #1231cd; color: #fff;" disabled>Data Acquisition</button>
+					  </div>
+					</div>
+				  </div>
+				</div><!-- End .tim row 1-->
+			  </div>
+			</div>
+			</br>
+			<div class="row slideanim">
+			  <div class="col-lg-12 justify-content-center d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+				<div class="col-lg-12 icon-boxes d-flex flex-column justify-content-center">
+				  <div class="row justify-content-center">
+					<div class="col-lg-4 d-flex align-items-stretch">
+					  <div class="icon-box">
+						<div class="profile-photo">
+							<img src="{{ url_for('static', filename='images/profile/Syifa.jpg') }}" width="100" class="img-fluid rounded-circle" alt="">
+						</div>
+						<h4><b>Syifa Aqilla</b></h4>
+						<p>Politeknik Negeri Padang</p>
+						<button type="button" class="btn btn-md btn-light btn-tim" style="background-color: #1231cd; color: #fff;" disabled>Deployment</button>
+					  </div>
+					</div>
+					<div class="col-lg-4 d-flex align-items-stretch">
+					  <div class="icon-box">
+						<div class="profile-photo">
+							<img src="{{ url_for('static', filename='images/profile/Talenta.jpeg') }}" width="100" class="img-fluid rounded-circle" alt="">
+						</div>
+						<h4><b>Talenta Pardede</b></h4>
+						<p>Universitas Sumatera Utara</p>
+						<button type="button" class="btn btn-md btn-light" style="background-color: #1231cd; color: #fff;" disabled>Data Acquisition</button>
+					  </div>
+					</div>
+				  </div>
+				</div><!-- End .tim-->
+			  </div>
+			</div>
+		  </div>
+	</div>
+	
+	<footer id="footer">
+		<div class="container">
+		  <div class="me-md-auto text-center text-md-start">
+			<a href="#halamanku" title="To Top">
+				<i class="fa fa-chevron-up" aria-hidden="true" style="color: #fff;"></i>
+			</a>
+			<p>
+			  &copy; Copyright 2023 <b>TRIASIH v.1.0</b>
+			</p>
+			<p>
+			  Designed by <b>Asimo 1</b>
+			</p>
+		  </div>
+		</div>
+	</footer><!-- End Footer -->
+
+	<!-- JavaScript untuk Animasi Scroll dan Prediksi Model -->
+	<script  src={{ url_for('static', filename='/js/client_side.js') }}></script>
+
+</body>
+</html>
